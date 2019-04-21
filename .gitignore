@@ -1,0 +1,6 @@
+/build
+/install
+/log
+robug/__pycache__/
+
+\.idea/workspace\.xml
