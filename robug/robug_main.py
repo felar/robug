@@ -18,7 +18,7 @@ def main():
     # Initialize ROS2 node
     ros_node = RobugNode()
 
-    # "spin" the node. This halts execution until rospy gets shut down.
+    # "spin" the node. This halts execution until rclpy gets shut down.
     rclpy.spin(node=ros_node)
 
     rclpy.shutdown()

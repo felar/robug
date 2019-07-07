@@ -1,10 +1,10 @@
-# Rospy
-`rospy` ist die Python-Bibliothek, mit der man ROS2 kontrollieren kann. Hier sind einige der grundlegensten Methoden dieser Bibliothek erklärt. Die detaillierte Dokumentation findet man [hier](http://docs.ros2.org/crystal/api/rclpy/api).
+# Rclpy
+`rclpy` ist die Python-Bibliothek, mit der man ROS2 kontrollieren kann. Der Name steht für **R**OS **C**lient **L**ibrary **Py**thon. Hier sind einige der grundlegensten Methoden dieser Bibliothek erklärt. Die detaillierte Dokumentation findet man [hier](http://docs.ros2.org/crystal/api/rclpy/api).
 
 ## Allgemein
 
 ### `rclpy.init()`
-Diese Methode initialisiert `rospy` und sollte aufgerufen werden, bevor in irgendeiner Weise darauf zugegriffen wird.
+Diese Methode initialisiert `rclpy` und sollte aufgerufen werden, bevor in irgendeiner Weise darauf zugegriffen wird.
 
 **Relevante Argumente:** 
 
