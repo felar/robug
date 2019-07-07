@@ -2,5 +2,5 @@
 
 - ROS 2
   - [Einleitung](ros/einleitung.md)
-  - [Graph Concepts](ros/Graph%20Concepts.md)
+  - [ROS2 Konzepte](ros/graph_concepts.md)
   - [Rospy](ros/rospy.md)
