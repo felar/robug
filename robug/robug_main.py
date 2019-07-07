@@ -6,20 +6,20 @@ class RobugNode(Node):
 
     def __init__(self):
         # Init the node, setting the name to robug_node
-        super().__init__("robug_node")
+        super().__init__(node_name="robug_node")
 
         # Subscribers, publishers, etc. can/will get initialized here in the future.
 
 
-def main(args=None):
+def main():
 
-    rclpy.init(args=args)
+    rclpy.init()
 
     # Initialize ROS2 node
     ros_node = RobugNode()
 
     # "spin" the node. This halts execution until rospy gets shut down.
-    rclpy.spin(ros_node)
+    rclpy.spin(node=ros_node)
 
     rclpy.shutdown()
 
