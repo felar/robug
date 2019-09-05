@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
+from geometry_msgs.msg import Twist
 
 
 class RobugNode(Node):
@@ -11,6 +12,8 @@ class RobugNode(Node):
 
         # Subscribers, publishers, etc. can/will get initialized here in the future.
         self.subscription = self.create_subscription(msg_type=LaserScan, topic='scan', callback=self.sub_call)
+        self.publisher = self.create_publisher(msg_type=Twist, topic='cmd_vel')
+
 
     def sub_call (self, msg):
         print('Nachricht empfangen!')
