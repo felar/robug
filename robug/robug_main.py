@@ -1,5 +1,6 @@
 import rclpy
 from rclpy.node import Node
+from sensor_msgs.msg import LaserScan
 
 
 class RobugNode(Node):
@@ -9,6 +10,12 @@ class RobugNode(Node):
         super().__init__(node_name="robug_node")
 
         # Subscribers, publishers, etc. can/will get initialized here in the future.
+        self.subscription = self.create_subscription(msg_type=LaserScan, topic='scan', callback=self.sub_call)
+
+    def sub_call (self, msg):
+        print('Nachricht empfangen!')
+        print(msg)
+
 
 
 def main():
