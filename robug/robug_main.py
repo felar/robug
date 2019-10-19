@@ -1,6 +1,8 @@
 import rclpy
 import tensorflow as tf
 from rclpy.node import Node
+from sensor_msgs.msg import LaserScan
+from geometry_msgs.msg import Twist
 
 
 class RobugNode(Node):
@@ -10,6 +12,31 @@ class RobugNode(Node):
         super().__init__(node_name="robug_node")
 
         # Subscribers, publishers, etc. can/will get initialized here in the future.
+        self.subscription = self.create_subscription(msg_type=LaserScan, topic='scan', callback=self.sub_call)
+        self.publisher = self.create_publisher(msg_type=Twist, topic='cmd_vel')
+        self.switch = True
+        self.timer = self.create_timer(5, self.timer_callback)
+
+    def sub_call (self, msg):
+        vel_cmd = Twist()
+        # vel_cmd.linear.x = 0.15
+        # vel_cmd.angular.z = 0.1
+        # self.publisher.publish(vel_cmd)
+
+    def timer_callback(self):
+
+        if self.switch == True:
+            vel_straight = Twist()
+            vel_straight.linear.x = 0.1
+            vel_straight.angular.z = 0.0
+            self.publisher.publish(vel_straight)
+            self.switch = False
+        else:
+            vel_turn = Twist()
+            vel_turn.linear.x = 0.0
+            vel_turn.angular.z = 0.1
+            self.publisher.publish(vel_turn)
+            self.switch = True
 
 
 def main():
