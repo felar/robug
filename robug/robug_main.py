@@ -1,5 +1,6 @@
 import rclpy
 import tensorflow as tf
+import tf_agents as tfa
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
