@@ -5,5 +5,5 @@
   - [ROS2 Konzepte](ros/graph_concepts.md)
   - [Rclpy](ros/rclpy.md)
 - Neuronale Netzwerke
-  - Allgemeine Neuronale Netzwerke (TBD)
+  - [Allgemeine Neuronale Netzwerke](neural_networks/general_neural_networks.md)
   - [Reinforcement Learning](neural_networks/reinforcement_learning.md)
