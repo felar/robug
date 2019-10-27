@@ -64,11 +64,8 @@ class RobugEnv(py_environment.PyEnvironment):
         while not self.reset_client.wait_for_service(timeout_sec=1.0):
             self.ros_node.get_logger().info('simulation reset service not available, waiting...')
 
-        # Get a 'future' object that can tell use when the request is completed
-        future = self.reset_client.call_async(reset_request)
-
-        # Wait until the request is completed
-        rclpy.spin_until_future_complete(self.ros_node, future)
+        # Send the request
+        self.reset_client.call(reset_request)
 
         return time_step.restart(self.latest_observation)
 
