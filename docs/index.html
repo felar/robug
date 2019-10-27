@@ -8,11 +8,27 @@
 </head>
 <body>
   <div id="app"></div>
+  <script src="//unpkg.com/browse/mermaid@8.4.0/dist/"></script>
   <script>
+    mermaid.initialize({
+      startOnLoad:true
+    });
+
     window.$docsify = {
       homepage: 'uebersicht.md',
-      // load from _sidebar.md
-      loadSidebar: true
+      loadSidebar: true,
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === "mermaid") {
+              return (
+                '<div class="mermaid">' + mermaid.render('mermaid-svg-' + num++, code) + "</div>"
+              );
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      }
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
