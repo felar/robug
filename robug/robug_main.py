@@ -1,5 +1,6 @@
 import rclpy
-from robug_env import RobugEnv
+
+from .robug_env import RobugEnv
 
 
 def main():

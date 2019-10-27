@@ -5,3 +5,4 @@
 - Use _`build_and_run.sh`_ to do both
 - You do not have to build the project anew after every code change
 - Running the code using PyCharms "quick run" works as long as the code isn't too complicated - if not, use _`run.sh`_
+- run `pip` commands with `python3 -m pip` and `--user`
