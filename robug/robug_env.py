@@ -1,3 +1,5 @@
+from threading import Thread
+
 import numpy as np
 import rclpy
 from geometry_msgs.msg import Twist
@@ -31,6 +33,12 @@ class RobugEnv(py_environment.PyEnvironment):
         )
         # Start with 0.2 everywhere as observation because if we set it to zero the bot would immediately lose
         self.latest_observation = np.array([0.2] * 360, dtype=np.dtype('float64'))
+
+        # This spins the node in parallel so we can continue running Tensorflow while the node is spinning
+        Thread(target=self.spin_node).start()
+
+    def spin_node(self):
+        rclpy.spin(self.ros_node)
 
     def update_observation(self, msg):
         distances = np.array(msg.ranges, dtype=np.dtype('float64'))
