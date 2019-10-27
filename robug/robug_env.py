@@ -64,8 +64,12 @@ class RobugEnv(py_environment.PyEnvironment):
         while not self.reset_client.wait_for_service(timeout_sec=1.0):
             self.ros_node.get_logger().info('simulation reset service not available, waiting...')
 
-        # Send the request
+        # Send the request to reset the simulation
         self.reset_client.call(reset_request)
+
+        # Reset the observation - otherwise, the bot will lose immediately because the old observation
+        # (where we drove against the wall) is still there
+        self.latest_observation = np.array([0.2] * 360, dtype=np.dtype('float64'))
 
         return time_step.restart(self.latest_observation)
 
