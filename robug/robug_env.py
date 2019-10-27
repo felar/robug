@@ -14,10 +14,12 @@ class RobugEnv(py_environment.PyEnvironment):
         super().__init__()
 
         # Create a node and a client for the reset_simulation service that we can use later to reset the simulation
-        self.reset_node = rclpy.create_node('minimal_client')
-        self.reset_client = self.reset_node.create_client(Empty, 'reset_simulation')
-        self.velocity_publisher = self.create_publisher(msg_type=Twist, topic='cmd_vel')
-        self.laser_scan_subscription = self.create_subscription(msg_type=LaserScan, topic='scan', callback=self.update_observation)
+        self.ros_node = rclpy.create_node('minimal_node')
+
+        self.reset_client = self.ros_node.create_client(Empty, 'reset_simulation')
+
+        self.velocity_publisher = self.ros_node.create_publisher(msg_type=Twist, topic='cmd_vel')
+        self.laser_scan_subscription = self.ros_node.create_subscription(msg_type=LaserScan, topic='scan', callback=self.update_observation)
         self.latest_observation = [0.0] * 360
 
     def update_observation(self, msg):
@@ -34,7 +36,10 @@ class RobugEnv(py_environment.PyEnvironment):
 
     def observation_spec(self):
         return array_spec.BoundedArraySpec(
-          shape=(1, 360), dtype=float, name='observation')
+            shape=(1, 360),
+            dtype=np.float32,
+            name='observation'
+        )
 
     def _reset(self):
         # Create an empty request to reset the simulation (emtpy because we don't specify any arguments for the request)
@@ -42,33 +47,39 @@ class RobugEnv(py_environment.PyEnvironment):
 
         # Wait for the reset service to appear
         while not self.reset_client.wait_for_service(timeout_sec=1.0):
-            self.reset_node.get_logger().info('simulation reset service not available, waiting...')
+            self.ros_node.get_logger().info('simulation reset service not available, waiting...')
 
         # Get a 'future' object that can tell use when the request is completed
         future = self.reset_client.call_async(reset_request)
 
         # Wait until the request is completed
-        rclpy.spin_until_future_complete(self.reset_node, future)
+        rclpy.spin_until_future_complete(self.ros_node, future)
 
         return time_step.restart(self.latest_observation)
 
     def _step(self, action):
 
+        # Go left
         if action == -1:
             vel_turn = Twist()
             vel_turn.linear.x = 0.1
             vel_turn.angular.z = 0.1
             self.velocity_publisher.publish(vel_turn)
+
+        # Go straight
         elif action == 0:
             vel_turn = Twist()
             vel_turn.linear.x = 0.1
             vel_turn.angular.z = 0.0
             self.velocity_publisher.publish(vel_turn)
+
+        # Go right
         elif action == 1:
             vel_turn = Twist()
             vel_turn.linear.x = 0.1
             vel_turn.angular.z = -0.1
             self.velocity_publisher.publish(vel_turn)
+
         else:
             raise ValueError('`action` should be -1, 0 or 1.')
 
