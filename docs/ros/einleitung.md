@@ -11,7 +11,7 @@ Der Turtlebot ist bereits darauf ausgerichtet, mit ROS betrieben zu werden. Dadu
 Darum, wie ROS grundsätzlich funktioniert (und später auch, wie genau wir es benutzen), wird es sich in diesem Abschnitt drehen.
 
 
-````mermaid
+```mermaid
 graph LR
 A[Turtlebot 3]
 
@@ -26,4 +26,4 @@ A -->|publish Sensor-Input| B
 C -->|subscribe|A
 B -->|subscribe|D
 D -->|publish Richtungs-Befehle|C
-````
+```
