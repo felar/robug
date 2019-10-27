@@ -97,7 +97,10 @@ class RobugEnv(py_environment.PyEnvironment):
 
         current_observation = self.latest_observation
 
-        in_front_of_wall = (0.0 == min(current_observation))
+        # The sensor itself is not in the middle of the TB3, so we need to check for
+        # walls in a larger range
+        # min(...) finds the smallest number in the array
+        in_front_of_wall = (0.13 >= min(current_observation))
 
         if in_front_of_wall:
             reward = -100
