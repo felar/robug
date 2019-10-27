@@ -1,10 +1,11 @@
 import numpy as np
 import rclpy
 from geometry_msgs.msg import Twist
+from rclpy.qos import qos_profile_sensor_data
 from sensor_msgs.msg import LaserScan
 from std_srvs.srv import Empty
-from tf_agents.specs import array_spec
 from tf_agents.environments import py_environment
+from tf_agents.specs import array_spec
 from tf_agents.trajectories import time_step
 
 
@@ -19,17 +20,30 @@ class RobugEnv(py_environment.PyEnvironment):
         self.reset_client = self.ros_node.create_client(Empty, 'reset_simulation')
 
         self.velocity_publisher = self.ros_node.create_publisher(msg_type=Twist, topic='cmd_vel')
-        self.laser_scan_subscription = self.ros_node.create_subscription(msg_type=LaserScan, topic='scan', callback=self.update_observation)
-        # Start with 0.1 everywhere as observation because if we set it to zero the bot would immediately lose
-        self.latest_observation = [0.1] * 360
+
+        # We have to use qos_profile=qos_profile_sensor_data here, otherwise we don't receive input.
+        # See https://answers.ros.org/question/334649/ros2-turtlebot3-gazebo-scan-topic-subscriber-is-not-calling-the-callback-function/
+        self.laser_scan_subscription = self.ros_node.create_subscription(
+            msg_type=LaserScan,
+            topic='scan',
+            callback=self.update_observation,
+            qos_profile=qos_profile_sensor_data
+        )
+        # Start with 0.2 everywhere as observation because if we set it to zero the bot would immediately lose
+        self.latest_observation = np.array([0.2] * 360, dtype=np.dtype('float64'))
 
     def update_observation(self, msg):
-        self.latest_observation = msg.ranges
+        distances = np.array(msg.ranges, dtype=np.dtype('float64'))
+
+        # The turtlebot sometimes returns infinity as a value, which Tensorflow can't handle. So we cap the
+        # "view distance" at 3.5
+        distances[distances > 3.5] = 3.5
+        self.latest_observation = distances
 
     def action_spec(self):
         return array_spec.BoundedArraySpec(
           shape=(),
-          dtype=np.int32,
+          dtype=np.dtype('int32'),
           minimum=-1,
           maximum=1,
           name='action'
@@ -37,8 +51,8 @@ class RobugEnv(py_environment.PyEnvironment):
 
     def observation_spec(self):
         return array_spec.BoundedArraySpec(
-            shape=(1, 360),
-            dtype=np.float32,
+            shape=(360,),
+            dtype=np.dtype('float64'),
             name='observation'
         )
 
