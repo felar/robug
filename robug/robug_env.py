@@ -20,7 +20,8 @@ class RobugEnv(py_environment.PyEnvironment):
 
         self.velocity_publisher = self.ros_node.create_publisher(msg_type=Twist, topic='cmd_vel')
         self.laser_scan_subscription = self.ros_node.create_subscription(msg_type=LaserScan, topic='scan', callback=self.update_observation)
-        self.latest_observation = [0.0] * 360
+        # Start with 0.1 everywhere as observation because if we set it to zero the bot would immediately lose
+        self.latest_observation = [0.1] * 360
 
     def update_observation(self, msg):
         self.latest_observation = msg.ranges
