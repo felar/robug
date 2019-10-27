@@ -15,7 +15,7 @@ Diese Methode führt die Arbeit einer übergebenen Node aus. Die Ausführung des
 
 **Relevante Argumente:** 
 
-`node=` gibt die Node an, die aktiv werden soll.
+`node` gibt die Node an, die aktiv werden soll.
 
 ### `rclpy.shutdown()`
 Diese Methode beendet `rclpy` und alle Nodes, die wir gestartet haben. Sie sollte am Ende des Programms aufgerufen werden.
@@ -52,9 +52,9 @@ Ein Publisher hat nur eine Methode: `Publisher.publish()`, mit dem Argument `msg
 
 **Relevante Argumente:** 
 
-`msg_type=` gibt den Typ der Messages, die durch diesen Publisher gesendet werden können, an. Dieser Typ muss etwas sein wie `String`. (Siehe Abschnitt über Messages)
+`msg_type` gibt den Typ der Messages, die durch diesen Publisher gesendet werden können, an. Dieser Typ muss etwas sein wie `String`. (Siehe Abschnitt über Messages)
 
-`topic=` gibt den Namen des Topics, auf das der Publisher publishen soll an.
+`topic` gibt den Namen des Topics, auf das der Publisher publishen soll an.
 
 ### `Node.create_subscription()`
 Diese Methode erstellt einen neuen Subscriber. Subscriber haben keine Methoden, die man aufrufen kann.
@@ -75,11 +75,22 @@ def subscriber_callback(self, msg):
 
 **Relevante Argumente:**
 
-`msg_type=` gibt den Typ der Messages, die durch diesen Subscriber empfangen werden können, an. Dieser Typ muss etwas sein wie `String`. (Siehe Abschnitt über Messages)
+`msg_type` gibt den Typ der Messages, die durch diesen Subscriber empfangen werden können, an. Dieser Typ muss etwas sein wie `String`. (Siehe Abschnitt über Messages)
 
-`topic=` gibt den Namen des Topics, auf das der Subscriber subscriben soll an.
+`topic` gibt den Namen des Topics, auf das der Subscriber subscriben soll an.
 
-`callback=` gibt die Methode an, die aufgerufen werden soll, wenn eine neue Message im gegebenen Topic gepublished wird.
+`callback` gibt die Methode an, die aufgerufen werden soll, wenn eine neue Message im gegebenen Topic gepublished wird.
+
+### `Node.create_client()`
+Diese Methode erstellt einen neuen Client, mit dem ein Service aufgerufen werden kann.
+
+**Relevante Argumente:**
+
+`srv_type` gibt den "Typ" des Service an, womit auch festgelegt wird, was der Service ggf. für
+Parameter annimmt oder was für Werte er zurückgibt. Ein Service, der nichts annimmt oder zurückgibt,
+hat normalerweise den Typ `Empty`.
+
+`srv_name` gibt den Namen des Service an, unter dem dieser registriert wurde.
 
 ## Messages
 

@@ -23,6 +23,13 @@ Diese Message kann durch das Subscriben an andere Nodes weitergegeben werden.
 Wenn eine Node zu einem Topic subscribed, erhält sie alle Messages, die an dieses Topic gepublished werden.
 Es können beliebig viele Nodes etwas an ein Topic gepublished werden und es können beliebig viele Nodes ein Topic subscriben.
 
+## Services und Clients
+Services sind sozusagen Nodes, die von einem Programm (beispielsweise der Simulation) gestartet
+werden und von anderen Nodes aufgerufen werden können. Dann führen sie ihre zugehörige Aktion
+aus. Damit man von seiner eigenen Node einen Service aufrufen kann, muss man einen sogenannten
+Client erstellen, der für diesen Service zuständig ist. Über den Client kann der Service
+dann aufgerufen werden.
+
 ## Discovery 
 Die Discovery ist der Prozess in dem die Nodes entscheiden ob und wie sie miteinander kommunizieren. 
 Dies wird von ROS2 automatisch ausgeführt. 
