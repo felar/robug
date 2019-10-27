@@ -86,10 +86,7 @@ class RobugEnv(py_environment.PyEnvironment):
 
         current_observation = self.latest_observation
 
-        in_front_of_wall = False
-        for distance in current_observation:
-            if distance == 0.0:
-                in_front_of_wall = True
+        in_front_of_wall = (0.0 == min(current_observation))
 
         if in_front_of_wall:
             reward = -100
