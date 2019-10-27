@@ -23,7 +23,7 @@ end
 D[Unser Programm]
 
 A -->|publish Sensor-Input| B
-C -->|subscribe|A
-B -->|subscribe|D
+A -->|subscribe|C
+D -->|subscribe|B
 D -->|publish Richtungs-Befehle|C
 ```
