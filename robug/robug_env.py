@@ -34,6 +34,11 @@ class RobugEnv(py_environment.PyEnvironment):
         # Start with 0.2 everywhere as observation because if we set it to zero the bot would immediately lose
         self.latest_observation = np.array([0.2] * 360, dtype=np.dtype('float64'))
 
+        # TF Agents doesn't automatically call reset() when the robot drives against a wall.
+        # Instead, it just keeps calling step() to get more data. Because of this, we use
+        # _episode_ended to "mark" when the simulation should be reset in the next step
+        self._episode_ended = False
+
         # This spins the node in parallel so we can continue running Tensorflow while the node is spinning
         Thread(target=self.spin_node).start()
 
@@ -79,9 +84,16 @@ class RobugEnv(py_environment.PyEnvironment):
         # (where we drove against the wall) is still there
         self.latest_observation = np.array([0.2] * 360, dtype=np.dtype('float64'))
 
+        self._episode_ended = False
+
         return time_step.restart(self.latest_observation)
 
     def _step(self, action):
+
+        if self._episode_ended:
+            # The last action ended the episode. Ignore the current action and start
+            # a new episode.
+            return self.reset()
 
         # Go left
         if action == 0:
@@ -120,6 +132,7 @@ class RobugEnv(py_environment.PyEnvironment):
             reward = 1
 
         if in_front_of_wall:
+            self._episode_ended = True
             return time_step.termination(current_observation, reward)
         else:
             return time_step.transition(current_observation, reward)
