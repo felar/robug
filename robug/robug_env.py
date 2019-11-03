@@ -52,8 +52,8 @@ class RobugEnv(py_environment.PyEnvironment):
         return array_spec.BoundedArraySpec(
           shape=(),
           dtype=np.dtype('int32'),
-          minimum=-1,
-          maximum=1,
+          minimum=0,
+          maximum=2,
           name='action'
         )
 
@@ -84,21 +84,21 @@ class RobugEnv(py_environment.PyEnvironment):
     def _step(self, action):
 
         # Go left
-        if action == -1:
+        if action == 0:
             vel_turn = Twist()
             vel_turn.linear.x = 0.1
             vel_turn.angular.z = 0.1
             self.velocity_publisher.publish(vel_turn)
 
         # Go straight
-        elif action == 0:
+        elif action == 1:
             vel_turn = Twist()
             vel_turn.linear.x = 0.1
             vel_turn.angular.z = 0.0
             self.velocity_publisher.publish(vel_turn)
 
         # Go right
-        elif action == 1:
+        elif action == 2:
             vel_turn = Twist()
             vel_turn.linear.x = 0.1
             vel_turn.angular.z = -0.1
