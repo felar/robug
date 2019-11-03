@@ -1,5 +1,6 @@
 import rclpy
-from tensorflow.python.keras import optimizers
+import tensorflow as tf
+
 from tf_agents.agents.reinforce import reinforce_agent
 from tf_agents.drivers import dynamic_episode_driver
 from tf_agents.environments import tf_py_environment
@@ -21,7 +22,7 @@ def main():
         tf_env.action_spec(),
         fc_layer_params=(100, 50))
 
-    optimizer = optimizers.Adam()
+    optimizer = tf.compat.v1.train.AdamOptimizer()
 
     agent = reinforce_agent.ReinforceAgent(
         tf_env.time_step_spec(),
