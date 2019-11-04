@@ -13,8 +13,10 @@ from tf_agents.trajectories import time_step
 
 class RobugEnv(py_environment.PyEnvironment):
 
-    def __init__(self):
+    def __init__(self, bot_speed):
         super().__init__()
+
+        self.bot_speed = bot_speed
 
         # Create a node and a client for the reset_simulation service that we can use later to reset the simulation
         self.ros_node = rclpy.create_node('minimal_node')
@@ -98,22 +100,22 @@ class RobugEnv(py_environment.PyEnvironment):
         # Go left
         if action == 0:
             vel_turn = Twist()
-            vel_turn.linear.x = 0.1
-            vel_turn.angular.z = 0.1
+            vel_turn.linear.x = self.bot_speed
+            vel_turn.angular.z = self.bot_speed
             self.velocity_publisher.publish(vel_turn)
 
         # Go straight
         elif action == 1:
             vel_turn = Twist()
-            vel_turn.linear.x = 0.1
+            vel_turn.linear.x = self.bot_speed
             vel_turn.angular.z = 0.0
             self.velocity_publisher.publish(vel_turn)
 
         # Go right
         elif action == 2:
             vel_turn = Twist()
-            vel_turn.linear.x = 0.1
-            vel_turn.angular.z = -0.1
+            vel_turn.linear.x = self.bot_speed
+            vel_turn.angular.z = -self.bot_speed
             self.velocity_publisher.publish(vel_turn)
 
         else:
