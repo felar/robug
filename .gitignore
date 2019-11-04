@@ -4,3 +4,4 @@
 robug/__pycache__/
 
 \.idea/workspace\.xml
+/tensorboard_logs

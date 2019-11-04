@@ -12,6 +12,7 @@ from .robug_env import RobugEnv
 
 def main():
 
+    enable_tensorboard_logging()
     rclpy.init()
 
     py_environment = RobugEnv()
@@ -29,7 +30,9 @@ def main():
         tf_env.action_spec(),
         actor_network=actor_net,
         optimizer=optimizer,
-        normalize_returns=True)
+        normalize_returns=True,
+        debug_summaries=True
+    )
     agent.initialize()
 
     collect_policy = agent.collect_policy
@@ -53,6 +56,11 @@ def main():
         replay_buffer.clear()
 
     rclpy.shutdown()
+
+
+def enable_tensorboard_logging():
+    train_summary_writer = tf.summary.create_file_writer('./tensorboard_logs')
+    train_summary_writer.set_as_default()
 
 
 if __name__ == '__main__':
