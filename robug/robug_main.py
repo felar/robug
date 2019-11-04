@@ -4,6 +4,7 @@ import tensorflow as tf
 from tf_agents.agents.reinforce import reinforce_agent
 from tf_agents.drivers import dynamic_episode_driver
 from tf_agents.environments import tf_py_environment
+from tf_agents.metrics import tf_metrics
 from tf_agents.networks import actor_distribution_network
 from tf_agents.replay_buffers import tf_uniform_replay_buffer
 
@@ -47,7 +48,8 @@ def main():
         actor_network=actor_net,
         optimizer=optimizer,
         normalize_returns=normalize_returns,
-        debug_summaries=True
+        debug_summaries=True,
+        summarize_grads_and_vars=True
     )
     agent.initialize()
 
@@ -58,10 +60,17 @@ def main():
         batch_size=tf_env.batch_size,
         max_length=replay_buffer_size)
 
+    collection_metrics = [
+        tf_metrics.NumberOfEpisodes(),
+        tf_metrics.EnvironmentSteps(),
+        tf_metrics.AverageReturnMetric(),
+        tf_metrics.AverageEpisodeLengthMetric()
+    ]
+
     driver = dynamic_episode_driver.DynamicEpisodeDriver(
         tf_env,
         collect_policy,
-        observers=[replay_buffer.add_batch],
+        observers=[replay_buffer.add_batch] + collection_metrics,
         num_episodes=episodes_per_iteration
     )
 
