@@ -53,6 +53,12 @@ class RobugEnv(py_environment.PyEnvironment):
         # The turtlebot sometimes returns infinity as a value, which Tensorflow can't handle. So we cap the
         # "view distance" at 3.5
         distances[distances > 3.5] = 3.5
+
+        # Remove "NaN" (Not a Number) values because TF can't handle them
+        for index in range(len(distances)):
+            if np.isnan(distances[index]):
+                distances[index] = 0
+
         self.latest_observation = distances
 
     def action_spec(self):
