@@ -12,6 +12,8 @@ from .robug_env import RobugEnv
 
 network_layers = (100, 50)
 normalize_returns = True
+learning_rate = 0.00001
+discount = 0.5
 
 bot_speed = 0.1
 
@@ -30,7 +32,7 @@ def main():
 
     rclpy.init()
 
-    py_environment = RobugEnv(bot_speed)
+    py_environment = RobugEnv(bot_speed, discount)
     tf_env = tf_py_environment.TFPyEnvironment(py_environment)
 
     print("[ROBUG] Setting up neural net...")
@@ -40,7 +42,7 @@ def main():
         tf_env.action_spec(),
         fc_layer_params=network_layers)
 
-    optimizer = tf.compat.v1.train.AdamOptimizer()
+    optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate=learning_rate)
 
     agent = reinforce_agent.ReinforceAgent(
         tf_env.time_step_spec(),

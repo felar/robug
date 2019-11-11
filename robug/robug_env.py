@@ -13,10 +13,11 @@ from tf_agents.trajectories import time_step
 
 class RobugEnv(py_environment.PyEnvironment):
 
-    def __init__(self, bot_speed):
+    def __init__(self, bot_speed, discount):
         super().__init__()
 
         self.bot_speed = bot_speed
+        self.discount = discount
 
         # Create a node and a client for the reset_simulation service that we can use later to reset the simulation
         self.ros_node = rclpy.create_node('minimal_node')
@@ -143,4 +144,4 @@ class RobugEnv(py_environment.PyEnvironment):
             self._episode_ended = True
             return time_step.termination(current_observation, reward)
         else:
-            return time_step.transition(current_observation, reward)
+            return time_step.transition(current_observation, reward, discount=self.discount)
