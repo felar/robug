@@ -17,7 +17,9 @@ dieser Schichten und auch die Anzahl der Neuronen pro Schicht sind beliebig, das
 ### Wie funktionieren Neuronen? 
 Jedes Neuron funktioniert durch diese eine mathematische Funktion:
 
+```latex
 Y=A(X.W+b)
+```
 
 #### Der Input (X)
 Der Input wird als Vektor in die Funktion gegeben, auch Bilder werden "flach" in einen Vektor gepackt.
@@ -38,23 +40,31 @@ Die meistbenutzten Aktivierungsfunktionen sind Sigmoid, relu und softmax.
 Die Sigmoid-Funktion wurde früher häufig für die versteckten Schichten verwendet, heute wurde sie aber von effizienteren 
 Funktionen abgelöst.
 
-![Sigmoid_function](https://wikimedia.org/api/rest_v1/media/math/render/svg/9537e778e229470d85a68ee0b099c08298a1a3f6)
+```latex
+S(x) = \frac{ 1 }{ 1 + e^{ -x } } = \frac{ e^{ x } }{ e^{ x } + 1}
+```
 
 ##### relu
 Stark biologisch beeinflusst wurde diese Funktion zum Ablöser der Sigmoid-Funktion.
 
-![relu_function](https://wikimedia.org/api/rest_v1/media/math/render/svg/5fa5d3598751091eed580bd9dca873f496a2d0ac)
+```latex
+f(x) = max(0, x)
+```
 
 ##### softmax
 Die Softmax-Funktion wird in der letzten Schicht verwendet. Sie macht die hohen Werte höher und die niedrigen Werte niedriger, sodass
 es ein klares Ergebnis geben kann.
 
-![softmax_function](https://wikimedia.org/api/rest_v1/media/math/render/svg/e348290cf48ddbb6e9a6ef4e39363568b67c09d3)
+```latex
+softmax(L_{ n }) = \frac{ e^{ L_{ n } } }{ \left\lvert \left\lvert e^{ L } \right\rvert \right\rvert }
+```
 
 ### Was genau sagt mir der Output (Y)?
 Der Output, der die letzte Schicht des Netzwerkes bildet
  
-![cross_entropy_function](https://www.zahlen-kern.de/editor/equations/ugnm.png)
+```latex
+-\sum{Y'*log(Y)}
+```
 
  ........Hilfe!...... loss function, cross entropy, one hot encoded.......................
  

@@ -48,7 +48,7 @@ beispielsweise so aussehen:
 | Spiel verlieren| - 100     |
 
 Von der Wahl so einer Tabelle hängt dann auch das Verhalten des Netzwerks ab. Die 
-Belohnung (Reward [R]) eines Schritts fliesst dann als Faktor in die Loss Function (basierend
+Belohnung (Reward `R`) eines Schritts fliesst dann als Faktor in die Loss Function (basierend
 auf Cross Entropy) ein:
 
 ```latex
@@ -65,7 +65,7 @@ jetzt aber einen Vorteil: Wir müssen nicht die Differenz zwischen dem vorgegebe
 dem tatsächlichen Wert berechnen, um die Qualität des Ergebnisses des Netzwerks zu berechnen.
 Denn wir haben die Wertung ja bereits dadurch, dass die Belohnungstabelle positive und negative
 Belohnungen verteilt! Wir bewerten also nur die Qualität der Aktion, die gespielt wurde,
-ohne eine bessere anzugeben. Und das machen wir ganz einfach, indem wir für [P'] die Aktion
+ohne eine bessere anzugeben. Und das machen wir ganz einfach, indem wir für `P'` die Aktion
 (wieder "one-hot-encoded") angeben, die am Ende tatsächlich gespielt wurde. Da unser
 neuronales Netzwerk ja Wahrscheinlichkeiten ausspuckt, finden wir diesen, indem wir
 "per Zufall" (natürlich gewichtet durch das Ergebnis des Netzwerks) eine Aktion auswählen.
@@ -81,9 +81,11 @@ gewählt hat, wahrscheinlich entscheidender für diese Belohnung, als Aktionen, 
 eine Weile her sind. Daher verringert man die Menge der Belohnung exponentiell. Man
 wählt einen Hyperparameter, wie stark die Belohnungen über mehrere Schritte abnehmen sollen
 (beispielsweise 0.5). Dann berechnet man die eigentliche Belohnung für einen Schritt
-beim Index [i] und Abnahmefaktor [d] wie folgt:
+beim Index `i` und Abnahmefaktor `d` wie folgt:
 
-[R_i = R*d^i]
+```latex
+R_{i} = R * d^{i}
+```
 
 
 // TODO: Normalization mod
