@@ -51,7 +51,9 @@ Von der Wahl so einer Tabelle hängt dann auch das Verhalten des Netzwerks ab. D
 Belohnung (Reward [R]) eines Schritts fliesst dann als Faktor in die Loss Function (basierend
 auf Cross Entropy) ein:
 
-[loss = -R_i * sum(Y'_i * log(Y_i))]
+```latex
+loss = -R_{ i } * \sum{ Y'_{ i } * log(Y_{ i }) }
+```
 
 Erst nachdem wir in mindestens einer Runde die Belohnungen angesammelt haben, versuchen
 wir, das Netzwerk zu optimieren. Wir berechnen das Ergebnis der Loss Function aber trotzdem
