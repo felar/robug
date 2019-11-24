@@ -13,10 +13,11 @@ from tf_agents.trajectories import time_step
 
 class RobugEnv(py_environment.PyEnvironment):
 
-    def __init__(self, bot_speed, discount):
+    def __init__(self, bot_speed, steering_speed, discount):
         super().__init__()
 
         self.bot_speed = bot_speed
+        self.steering_speed = steering_speed
         self.discount = discount
 
         # Create a node and a client for the reset_simulation service that we can use later to reset the simulation
@@ -52,8 +53,8 @@ class RobugEnv(py_environment.PyEnvironment):
         distances = np.array(msg.ranges, dtype=np.dtype('float64'))
 
         # The turtlebot sometimes returns infinity as a value, which Tensorflow can't handle. So we cap the
-        # "view distance" at 3.5
-        distances[distances > 3.5] = 3.5
+        # "view distance" at 100.0
+        distances[distances > 100.0] = 100.0
 
         # Remove "NaN" (Not a Number) values because TF can't handle them
         for index in range(len(distances)):
@@ -108,7 +109,7 @@ class RobugEnv(py_environment.PyEnvironment):
         if action == 0:
             vel_turn = Twist()
             vel_turn.linear.x = self.bot_speed
-            vel_turn.angular.z = self.bot_speed
+            vel_turn.angular.z = self.steering_speed
             self.velocity_publisher.publish(vel_turn)
 
         # Go straight
@@ -122,7 +123,7 @@ class RobugEnv(py_environment.PyEnvironment):
         elif action == 2:
             vel_turn = Twist()
             vel_turn.linear.x = self.bot_speed
-            vel_turn.angular.z = -self.bot_speed
+            vel_turn.angular.z = -self.steering_speed
             self.velocity_publisher.publish(vel_turn)
 
         else:

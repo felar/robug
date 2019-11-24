@@ -16,6 +16,7 @@ learning_rate = 0.00001
 discount = 0.5
 
 bot_speed = 0.1
+steering_speed = 0.8
 
 iterations = 10
 episodes_per_iteration = 5
@@ -32,7 +33,7 @@ def main():
 
     rclpy.init()
 
-    py_environment = RobugEnv(bot_speed, discount)
+    py_environment = RobugEnv(bot_speed, steering_speed, discount)
     tf_env = tf_py_environment.TFPyEnvironment(py_environment)
 
     print("[ROBUG] Setting up neural net...")
