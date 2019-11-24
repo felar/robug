@@ -43,7 +43,7 @@ def main():
         tf_env.action_spec(),
         fc_layer_params=network_layers)
 
-    optimizer = tf.compat.v1.train.AdamOptimizer(learning_rate=learning_rate)
+    optimizer = tf.compat.v1.train.RMSPropOptimizer(learning_rate=learning_rate)
 
     agent = reinforce_agent.ReinforceAgent(
         tf_env.time_step_spec(),
