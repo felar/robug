@@ -6,6 +6,7 @@ from tf_agents.drivers import dynamic_episode_driver
 from tf_agents.environments import tf_py_environment
 from tf_agents.metrics import tf_metrics
 from tf_agents.networks import actor_distribution_network
+from tf_agents.policies.policy_saver import PolicySaver
 from tf_agents.replay_buffers import tf_uniform_replay_buffer
 
 from .robug_env import RobugEnv
@@ -57,6 +58,7 @@ def main():
     agent.initialize()
 
     collect_policy = agent.collect_policy
+    policy_saver = PolicySaver(collect_policy, batch_size=None)
 
     replay_buffer = tf_uniform_replay_buffer.TFUniformReplayBuffer(
         data_spec=agent.collect_data_spec,
@@ -84,6 +86,10 @@ def main():
         experience = replay_buffer.gather_all()
         agent.train(experience)
         replay_buffer.clear()
+
+        # Save the latest policy every 300 iterations
+        if i % 300 == 0:
+            policy_saver.save('policy_' + str(i))
 
     print("[ROBUG] Finished training, shutting down.")
 
