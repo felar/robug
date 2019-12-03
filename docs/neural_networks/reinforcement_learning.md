@@ -88,4 +88,14 @@ R_{i} = R * d^{i}
 ```
 
 
-// TODO: Normalization mod
+### Belohnungen werden normalisiert
+Besonders am Anfang des Trainings trifft ein Netzwerk noch essentiell zufällige Entscheidungen.
+Das heißt, es gibt viele Entscheidungen, die negativ bewertet werden, dagegen aber sehr wenige,
+die positiv bewertet werden. Es hat sich in Experimenten gezeigt, dass Netzwerke sich schneller
+trainieren lassen, wenn man bei diesen seltenen gut bewerteten Entscheidungen eine (verhältnismäßig)
+erhöhte Belohnung gibt, indem man die Belohnungen innerhalb eines Trainingsschritts (manchmal auch
+kleinere Einheiten, genannt "Batches") normalisiert.
+
+```latex
+R_{i} = \frac{R_{i} - \overline{R}}{stdev(R)}
+```
