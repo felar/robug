@@ -6,5 +6,7 @@
   - [Rclpy](ros/rclpy.md)
 - Neuronale Netzwerke
   - [Allgemeine Neuronale Netzwerke](neural_networks/general_neural_networks.md)
+  - [Optimierungsalgorithmen](neural_networks/optimierungsalgorithmen.md)
+  - [Architekturen](neural_networks/common_architectures.md)
   - [Reinforcement Learning](neural_networks/reinforcement_learning.md)
   - [Tensorflow Agents](neural_networks/tensorflow_agents.md)
