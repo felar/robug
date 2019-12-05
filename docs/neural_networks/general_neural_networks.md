@@ -60,29 +60,35 @@ softmax(L_{ n }) = \frac{ e^{ L_{ n } } }{ \left\lvert \left\lvert e^{ L } \righ
 ```
 
 ### Was genau sagt mir der Output (Y)?
-Der Output, der die letzte Schicht des Netzwerkes bildet
+Der Output, der die letzte Schicht des Netzwerkes bildet, gibt die Ergebnisse des Netzwerkes aus, also das, was das Netzwerk 
+für die richtige Lösung hält.
+
+### Was ist eine Verlustfunktion?
+Die Aufgabe der Verlustfunktion ist es die Ergebnisse, die das Netzwerk ausgibt, zu bewerten. 
+Sie bildet aus guten und schlechten Ergebnissen einen Wert.
+
+Die richtige Verlustfunktion zu wählen ist sehr schwierig, da sie zu den Anforderungen des Neuronalen Netzwerkes passen muss.
+Bei falscher Wahl kann der Prozess des Trainierens länger dauern oder gar nicht erst richtig funktionieren.
  
-```latex
+#### Kreuzentropie
+Die Verlustfunktion Kreuzentropie berechnet eine Art Diffenrenz zwischen dem Ergebnis des Netzwerkes und der tatsächlich richtigen Lösung
+mit dieser Formel:
+ ```latex
 -\sum{Y'*log(Y)}
 ```
+Die richtige Lösung ist einem Vektor angegeben, bei dem das richtige Ergebnis mit einer 1 und alle falschen Werte mit 
+einer 0 markiert sind. Dies nennt man auch One-Hot-Kodierung.
 
- ........Hilfe!...... loss function, cross entropy, one hot encoded.......................
- 
+Die Kreuzentropie basiert auch der Idee der Entropie der Informationstheorie, berechnet also die Anzahl der Bits die notwendig sind,
+um die Differenz zu übermitteln. Die Funktion gibt eine positive Bitzahl aus.
+
+___
+
 Das Ziel des neuronalen Netzwerkes ist dann das Ergebnis der Verlustfunktion zu minimieren um einen möglichst 
 korrekten Output auszugeben.
 
 Um diesen richtigen Output erreichen zu können gibt es sogenannte Optimierungsalgorithmen, dessen Ziel es ist,
 den kleinsten Abstand von richiger Lösung zu dem Output des Netzwerkes zu finden.
-Der bekannteste ist das Gradientenverfahren.
-
-##### Gradient Descent, das Gradientenverfahren
-Bei diesem Verfahren geht man, von einem Startpunkt anfangend, in Richtung des negativen Gradienten
-bis man an einem Punkt angekommen ist, an dem es nicht mehr tiefer geht.
-Dazu werden kleine Schritte in die Richtung des Minimums gemacht, die bei uns als Lernrate beizeichnet wird. 
-Diese Lernrate darf nicht zu groß gewählt werden, damit man an dem tiefsten Punkt überhaupt ankommen kann.
-Bei einer zu großen Lernrate kann man sich das so vorstellen wie bei einem Tal. Man steht auf einem Berg neben
-dem Tal, möchte aber in das Tal. Wenn man sich jetzt aber nur in zu großen Schritten bewegen kann, springt man immer 
-von einer Seite des Tals auf die andere, erreicht aber nie wirklich sein Ziel.
 
 Durch das Trainieren des neuralen Netzwerkes mit Optimierungsalgorithmus wird langsam der gewünschte Tiefpunkt erreicht.
 
