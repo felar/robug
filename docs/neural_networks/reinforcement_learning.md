@@ -99,3 +99,40 @@ kleinere Einheiten, genannt "Batches") normalisiert.
 ```latex
 R_{i} = \frac{R_{i} - \overline{R}}{stdev(R)}
 ```
+
+## Ausblick
+Natürlich sind die Möglichkeiten des bestärkenden Lernens mit den hier gezeigten Methoden noch
+lange nicht ausgeschöpft - das Feld der Architekturen für bestärkendes Lernen ist sehr aktuell 
+und aktiv, und jedes Jahr werden neue Architekturen mit neuen Ideen veröffentlicht. Zwei dieser
+Architekturen, die momentan sehr populär sind, ist das Deep Q Learning und das Modell (Soft) Actor
+Critic.
+
+_Notiz: Gerade diese beiden Methoden sind natürlich auch mathematisch weitaus komplexer als hier
+dargestellt, jedoch soll dieser Ausblick lediglich eine Perspektive geben, in welche Richtung sich
+das Feld aktuell entwickelt._
+
+### Deep Q Learning
+Beim Deep Q Learning (auch **DQN**) wird das neuronale Netzwerk nicht darauf trainiert, sich für
+eine Aktion zu entscheiden. Stattdessen soll es den Platz einer Wertefunktion (Q-Funktion) annehmen - das heißt,
+eine Funktion, die für eine gegebene Beobachtung und eine Aktion die für diese Aktion zu erwartende
+Belohnung berechnet. Die Aktion, die dann gewählt wird, hängt von davon ab, von welcher Aktion das Netzwerk
+sich die höchste Belohnung verspricht. Das Netzwerk wird dann darauf trainiert, die Belohnungen möglichst
+akkurat voraus zu sagen.
+
+Bei dieser Art von Lernen gibt es noch einen weiteren Vorteil: Man kann vorher gesammelte Daten
+beim Training wiederverwenden, und muss sie nicht nach jedem Trainingsvorgang komplett neu sammeln. Das nennt
+man auch "off-policy algorithm".
+
+Ein Nachteil an DQNs ist, dass der Raum der Aktionen diskret sein muss (also nur eine begrenzte Anzahl
+an Werten erlaubt), da sich sonst keine Wertetabelle für die verschiedenen Aktionen errechnen lässt.
+
+### (Soft) Actor Critic
+Bei einem Actor Critic System hat man, ähnlich zu den GANs, zwei neuronale Netzwerke, die jedes ihr
+eigenes Ziel verfolgen. Es gibt das "Actor"-Netzwerk, welches Entscheidungen über Aktionen trifft,
+und ein separates "Critic"-Netzwerk, welches diese Entscheidungen bewertet. Die Bewertungen finden
+dabei auch wieder in Form von Q-Werten statt.
+
+Da das "Actor"-Netzwerk jetzt in der Lage ist, auch nicht diskrete Aktionen zu wählen, und das
+"Critic"-Netzwerk diese bewertet, ohne, dass wir eine Tabelle brauchen, kann man damit das Konzept
+von DQNs auch auf Probleme mit komplexeren möglichen Aktionen anwenden. Hier wird dann statt einem
+Gradientenabstieg ein Gradientenaufstieg verwendet, um die Q-Werte zu maximieren.
