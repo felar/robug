@@ -95,6 +95,27 @@ Netzwerk, dass jedem Wort in einem Satz Gewichtungen zuweist, so dass Dinge wie 
 fallen. Außerdem werden rekurrente Netzwerke ein Satz einmal vorwärts und einmal rückwärts gegeben, damit auch Interpretationen
 möglich sind, bei denen Wörter am Anfang des Satzes mehr Bedeutung bekommen durch ein Wort gegen Ende.
 
+```mermaid
+graph TD
+A(X1 - Erstes Wort)
+B(Versteckte Schichten)
+C(Y1 - Zwischenergebnis)
+D(X2 - Zweites Wort)
+E(Versteckte Schichten)
+F(Y2 - Zwischenergebnis)
+G(X3 - Drittes Wort)
+H(Versteckte Schichten)
+I(Y3 - Endresultat)
+A --> B
+B --> C
+D --> E
+B -->|Zustand wird angehängt| E
+E --> F
+G --> H
+E -->|Zustand wird angehängt| H
+H --> I
+```
+
 ## Generative Adversarial Networks
 Generative Adversarial Networks, kurz **GAN**s, sind keine Architektur, so wie die vorigen Varianten waren, sondern
 eine Kombination aus neuronalen Netzwerken, die sich besonders gut für eine Sorte Probleme eignet: Das Generieren von
@@ -114,6 +135,20 @@ Die Genauigkeit, mit der der Diskriminator echte und gefälschte Daten auseinand
 normalen Verlustfunktion als Verlust für den Generator verwendet. Dieser wird so auf Dauer gezwungen, immer perfektere
 Daten zu erzeugen. So soll er (zumindest in der Theorie) über genug Iterationen schlussendlich lernen, perfekte Imitationen
 der realen Daten zu erzeugen.
+
+```mermaid
+graph LR
+A(Generator)
+B(Diskriminator)
+C[Echte Daten]
+D[Zufall/grobe Vorgaben]
+E[Generierte Daten]
+C --> B
+D --> A
+A --> E
+E --> B
+B -->|Genauigkeit wird als Verlust genutzt| A
+```
 
 In der Praxis sind die Resultate leider oft nicht ganz so gut, wie erhofft. Auch muss man sehr auf die Balance zwischen
 den beiden Netzwerken achten: Wenn eins der beiden sehr viel schlechter oder sehr viel besser als das andere abschneidet,
