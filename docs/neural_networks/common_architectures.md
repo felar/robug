@@ -64,7 +64,35 @@ Diese Art von Schichten ist deutlich effektiver zur Bilderkennung, wird aber imm
 So gibt es inzwischen beispielsweise die "Inception" Architektur, die viele "gefaltete" Schichten hintereinander kombiniert,
 aber sich auch Verzweigungen und Zusammenführungen der Schichten zu Nutze macht. 
 
-## Recurrent
+## Rekurrente neuronale Netze
+Rekurrente neuronale Netze ist eine Architektur von neuronalen Netzen, die sich speziell auf Probleme spezialisiert, die
+stark von Kontext abhängig sind. Das häufigste Beispiel hierfür ist die Interpretation und Übersetzung von Sprache.
 
+Rekurrente neuronale Netzwerke basieren auf der Idee, die Ergebnisse in den versteckten Schichten eines neuronalen
+Netzwerks als Zustände zu verstehen, und diese Zustände weiter zu verwenden. Das heißt bei der Deutung von
+beispielsweise dem Thema eines Satzes wird zuerst das erste Wort an das neuronale Netzwerk gegeben, welches eine
+Deutung (also ein vermutetes Thema) generiert. Für das zweite Wort wird dann an das gleiche Netzwerk sowohl das Wort,
+als auch der Zustand der versteckten Schichten vom ersten Wort übergeben - die Werte aus den versteckten Schichten
+werden einfach an den Vektor des Wortes angehängt. So geht die Prozedur dann weiter, bis das Netzwerk am Ende des Satzes
+eine Entscheidung getroffen hat, welches Thema der Satz behandelt.
 
-## Architecture Search
+Für die Architektur der versteckten Schichten gibt es bei rekurrenten neuronalen Netzwerken verschiedene Ansätze, die
+über die Jahre entwickelt wurden, da das Netzwerk bei einer simplen Architektur (wie hier beschrieben) Schwierigkeiten
+hat, verlässlich auf einen optimalen Punkt zuzulaufen (und dort schließlich stehen zu bleiben). Die wichtigste
+Eigenschaft dieser Architekturen sind die sogenannten "Forget Gates", die die Lang- und Kurzzeiterinnerung des Netzwerks
+regulieren. Beispiele für diese Architekturen (auch "Zellen" genannt) sind GRU Zellen (Generalized Recurrent Unit) oder
+LSTM zellen (Long Short Term Memory).
+
+Worauf man bei diesem Beispiel achten muss, ist dass ein rekurrentes Netzwerk allein hier nicht ausreicht: Wörter
+müssen natürlich überhaupt einmal als Vektoren repräsentiert werden. Das passiert in der Regel über vorher (ebenfalls
+über neuronale Netzwerke trainierte) Matrizen, die jedem Wort einer Sprache einen Wert zuordnen. Da diese Matrizen mit
+großen Mengen an Text trainiert werden und eine "Landschaft" aus Wörtern ergeben, hat das Resultat nützliche Eigenschaften
+wie dass (themen-)verwandte Wörter Werte zugewiesen werden, die nahe beieinander liegen. So lassen sich solche Listen
+häufig bei anderen Anwendungen wiederverwendet werden, oder können als Basis genutzt werden, die nurnoch kleine
+Modifikationen benötigt, um auf das neue Problem angewendet werden zu können.
+Weitere Methoden die verwendet werden, um Sprache besser interpretieren zu können sind beispielsweise ein zusätzliches
+Netzwerk, dass jedem Wort in einem Satz Gewichtungen zuweist, so dass Dinge wie Artikel nicht so schwer ins Gewicht
+fallen. Außerdem werden rekurrente Netzwerke ein Satz einmal vorwärts und einmal rückwärts gegeben, damit auch Interpretationen
+möglich sind, bei denen Wörter am Anfang des Satzes mehr Bedeutung bekommen durch ein Wort gegen Ende.
+
+## Generative Adversarial Networks
