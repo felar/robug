@@ -20,6 +20,32 @@ Er steht auf dem Berg neben dem Tal und möchte weiterhin in das Tal.
 Wenn er sich jetzt aber nur in zu großen Schritten bewegen kann, springt er immer 
 von einer Seite des Tals auf die andere, erreicht aber nie wirklich sein Ziel.
 
-![gradient_descent](https://github.com/felar/robug/blob/master/pictures_gifs/gradientdescent.gif)
+![gradient_descent](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/gradientdescent.gif)
+#
+Im Vergleich zu anderen Algorithmen ist das Gradientenverfahren jedoch sehr langsam.
+Deshalb wurden zunächst einige kleine Abänderungen des Verfahrens genutzt und später dann auch ganz andere Algorithmen.
+
+![comparison](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/optimizer_comparison.gif)
+
+## Stochastisches Gradientenverfahren (SGD)
+Das Standart Gradientenverfahren braucht sehr viele Berechnungen bevor etwas passiert. Das stochastische Gradientenverfahren
+kürzt diesen Prozess drastisch. "Stochastisch" steht in diesem Fall einfach für "zufällig". 
+Das Verfahren wählt zufällig genau einen Wert des Outputs pro Durchgang und berechnet nur für diesen den Gradienten, anstatt
+für jeden Wert.
+
+## Gradientenverfahren mit Momentum
+Das Gradientenverfahren mit Momentum ist erstmal so wie das SGD aufgebaut. Es gibt jedoch eine "durchschnittliche Bewegung", die 
+Momentum genannt wird und für die Berechnung des Gradienten genutzt wird.
+
+## Nesterovs beschleunigtes Gradientenverfahren (NAG)
+
+
+## Adagrad
+
+## Adadelta
+
+## RMSprop
+Der RMSprop Algorithmus, den wir in unserem Projekt benutzen, funktioniert 
+
 
 
