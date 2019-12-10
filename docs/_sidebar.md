@@ -10,3 +10,4 @@
   - [Architekturen](neural_networks/common_architectures.md)
   - [Reinforcement Learning](neural_networks/reinforcement_learning.md)
   - [Tensorflow Agents](neural_networks/tensorflow_agents.md)
+  - [Unser Experiment](neural_networks/our_experiment.md)
