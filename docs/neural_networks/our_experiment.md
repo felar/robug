@@ -46,7 +46,7 @@ mehr taugte die simple Struktur offenbar nicht.
 
 Hier einmal beispielhaft der Verlauf der Verlustfunktion beim dritten Durchlauf:
 
-![Loss during run 3](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/run_03_total_loss.svg)
+![Loss during run 3](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/run_03_total_loss.png)
 
 Man sieht schnell, dass Robug sich hier früh eine Taktik ausgesucht hat, und die im folgenden stumpf nurnoch
 ausgenutzt hat. Die Taktik (geradeaus zu fahren) war aber leider nicht die, die wir erreichen wollten.
@@ -73,7 +73,7 @@ zu fahren. Selten kriegt er es sogar hin, eine ganze Runde zu drehen!
 
 Er ist sich aber auch deutlich unsicherer bei seiner Taktik, was man an der Verlustfunktion erkennt:
 
-![Loss during run 10](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/run_10_total_loss.svg)
+![Loss during run 10](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/run_10_total_loss.png)
 
 Man sieht auch an den normalisierten Belohnungen, dass er mit der Zeit immer besser darin wird, hohe Belohnungen
 zu erhalten:
