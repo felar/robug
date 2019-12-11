@@ -41,7 +41,7 @@ Momentum genannt wird und für die Berechnung des Gradienten genutzt wird.
 Nesterovs beschleunigtes Gradientenverfahren ist eine etwas andere Version des Gradientenverfahren mit Momentum, das in 
 letzter Zeit populärer wird. In dieser Version wird der Gradient von dem Punkt aus berechnet, zu dem das Momentum zeigt.
 
-![comparison_momentum_NAG](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/) <<<<<<
+![comparison_momentum_NAG](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/nag_comp.png)
 
 ## Adagrad
 Adagrad ist auch ein auf Gradienten basierter Optimierungsalgorithmus. Er passt, im Gegensatz zu den zuvor gennannten Algorithmen, 
