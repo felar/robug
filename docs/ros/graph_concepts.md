@@ -1,5 +1,5 @@
 
-# Graph Concepts
+# ROS2 Konzepte
 ROS2 ist eine Middleware, das heißt eine Software für die Kommunikation zwischen verschiedenen Programmen und Programmiersprachen.
 
 Es besteht zum Großteil aus dem ROS Graphen, einem Netzwerk aus Nodes und Verbindungen zwischen diesen.
