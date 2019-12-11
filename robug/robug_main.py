@@ -11,17 +11,17 @@ from tf_agents.replay_buffers import tf_uniform_replay_buffer
 
 from .robug_env import RobugEnv
 
-network_layers = (100, 50)
+network_layers = (360, 200, 100, 50, 15)
 normalize_returns = True
-learning_rate = 0.00001
-discount = 0.5
+learning_rate = 0.0001
+discount = 0.999
 
-bot_speed = 0.1
+bot_speed = 0.5
 steering_speed = 0.8
 
-iterations = 10
+iterations = 3001
 episodes_per_iteration = 5
-replay_buffer_size = 3600
+replay_buffer_size = 360000
 
 tensorboard_log_directory = './tensorboard_logs'
 
@@ -87,8 +87,11 @@ def main():
         agent.train(experience)
         replay_buffer.clear()
 
+        print("Finished iteration " + str(i))
+
         # Save the latest policy every 300 iterations
-        if i % 300 == 0:
+        if i > 0 and i % 300 == 0:
+            print("Saving policy...")
             policy_saver.save('policy_' + str(i))
 
     print("[ROBUG] Finished training, shutting down.")
