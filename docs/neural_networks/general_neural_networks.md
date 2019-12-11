@@ -96,3 +96,5 @@ Durch das Trainieren des neuralen Netzwerkes mit Optimierungsalgorithmus wird la
 Wenn man mit dem neuronalen Netzwerk anfängt setzt man die Gewichte zufällig. Dies führt natürlich am Anfang zu
 schlechten Ergebnissen. Durch die Verlustfunktion und die Optimierungsalgorithmen werden die Gewichte nach 
 und nach angepasst.
+
+<<<<<< Bilder Aktivierungsfunktionen einheitlich 
