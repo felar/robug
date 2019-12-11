@@ -89,6 +89,8 @@ Durch diese Verbesserungen ist Robug deutlich schlauer geworden! Eine auf Dauer 
 noch nicht entwickelt, aber er schafft es so schon, am Ende des mittleren Pfades links abzudrehen und eine halbe Runde
 zu fahren. Selten kriegt er es sogar hin, eine ganze Runde zu drehen!
 
+![Performance after run 10](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/run_10_performance.gif)
+
 Man sieht an den normalisierten Belohnungen, dass er mit der Zeit immer besser darin wird, hohe Belohnungen
 zu erhalten:
 
