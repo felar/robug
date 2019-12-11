@@ -44,12 +44,15 @@ Funktionen abgelöst.
 S(x) = \frac{ 1 }{ 1 + e^{ -x } } = \frac{ e^{ x } }{ e^{ x } + 1}
 ```
 
+![sigmoid](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/sigmoid.png)
+
 ##### relu
 Stark biologisch beeinflusst wurde diese Funktion zum Ablöser der Sigmoid-Funktion.
 
 ```latex
 f(x) = max(0, x)
 ```
+![relu](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/relu.png)
 
 ##### softmax
 Die Softmax-Funktion wird in der letzten Schicht verwendet. Sie macht die hohen Werte höher und die niedrigen Werte niedriger, sodass
@@ -58,6 +61,7 @@ es ein klares Ergebnis geben kann.
 ```latex
 softmax(L_{ n }) = \frac{ e^{ L_{ n } } }{ \left\lvert \left\lvert e^{ L } \right\rvert \right\rvert }
 ```
+![softmax](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/softmax.png)
 
 ### Was genau sagt mir der Output (Y)?
 Der Output, der die letzte Schicht des Netzwerkes bildet, gibt die Ergebnisse des Netzwerkes aus, also das, was das Netzwerk 
@@ -96,5 +100,3 @@ Durch das Trainieren des neuralen Netzwerkes mit Optimierungsalgorithmus wird la
 Wenn man mit dem neuronalen Netzwerk anfängt setzt man die Gewichte zufällig. Dies führt natürlich am Anfang zu
 schlechten Ergebnissen. Durch die Verlustfunktion und die Optimierungsalgorithmen werden die Gewichte nach 
 und nach angepasst.
-
-<<<<<< Bilder Aktivierungsfunktionen einheitlich 
