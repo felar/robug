@@ -5,6 +5,7 @@
   - [ROS2 Konzepte](ros/graph_concepts.md)
   - [Rclpy](ros/rclpy.md)
 - Neuronale Netzwerke
+  - [Künstliche Intelligenz](neural_networks/artificial_intelligence.md)
   - [Allgemeine Neuronale Netzwerke](neural_networks/general_neural_networks.md)
   - [Optimierungsalgorithmen](neural_networks/optimierungsalgorithmen.md)
   - [Architekturen](neural_networks/common_architectures.md)
