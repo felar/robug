@@ -3,7 +3,7 @@
 Tensorflow ist eine Python-Bibliothek, die von Google entwickelt wurde, um
 dem Umgang mit neuronalen Netzwerken zu vereinfachen. Ihr Ziel ist es, gleichzeitig
 einen möglichst unkomplizierten Einstieg in das Thema für Anfänger zu bieten, aber
-auch für Fortgeschrittene Anwender interessant zu sein, indem es die Möglichkeit bietet,
+auch für fortgeschrittene Anwender interessant zu sein, indem es die Möglichkeit bietet,
 eigene Aktivierungsfunktionen zu testen oder ein Modell auf mehreren GPUs zu trainieren.
 
 Tensorflow is Open Source und wird ohne weitere Kosten von Google zur Verfügung gestellt.
@@ -48,12 +48,13 @@ Treiber sind nicht strikt nötig, um mit Tensorflow Agents zu arbeiten, sie vere
 ist in diesem Kontext nämlich dafür zuständig, die Daten anzusammeln. Das heißt man übergibt den Treiber
 einfach die Anzahl an Episoden, die er pro Iteration machen soll, und ruft ihn dann zu einem geeigneten
 Zeitpunkt auf. Der Treiber kümmert sich dann selbstständig darum, die entsprechende Anzahl an Episoden
-zu durchlaufen und die gesammelte Erfahrung zu speichern. Üblicherweise passiert das mit einem _Replay
-Buffer_ (siehe unten). Gleichzeitig kann ein Treiber aber auch Statistiken wie Anzahl an Episoden und
+zu durchlaufen und die gesammelte Erfahrung zu speichern. Üblicherweise passiert das mit einem _[Replay
+Buffer](#replay-buffers)_. 
+Gleichzeitig kann ein Treiber aber auch Statistiken wie Anzahl an Episoden und
 durchschnittliche Belohnungen aufzeichnen.
 
 ## Replay Buffers
 Replay Buffer funktionieren als einfacher Speicher, der sich auf das Format der Erfahrungen eines
 neuronalen Netzwerks anpasst. Sie werden mit einer gewissen Größe initialisiert, und halten dann
-ihnen gegebene Daten fest. Diese können dann als ganzes wiedergegeben werden, oder (was für manche
+ihnen gegebene Daten fest. Diese können dann als Ganzes wiedergegeben werden, oder (was für manche
 Architekturen relevant ist) stichprobenartig eine Anzahl Erinnerungen noch einmal ausgeben.

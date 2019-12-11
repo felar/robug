@@ -68,7 +68,7 @@ Hier einmal beispielhaft der Verlauf der Verlustfunktion beim dritten Durchlauf:
 
 ![Loss during run 3](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/run_03_total_loss.png)
 
-Man sieht schnell, dass Robug sich hier früh eine Taktik ausgesucht hat, und die im folgenden stumpf nurnoch
+Man sieht schnell, dass Robug sich hier früh eine Taktik ausgesucht hat, und die im Folgenden stumpf nurnoch
 ausgenutzt hat. Die Taktik (geradeaus zu fahren) war aber leider nicht die, die wir erreichen wollten.
 
 Um das Verhalten von Robug zu verbessern haben wir im Lauf der Durchläufe folgende Veränderungen vorgenommen:
@@ -79,9 +79,9 @@ Um das Verhalten von Robug zu verbessern haben wir im Lauf der Durchläufe folge
 - Vergrößerung des Netzwerks auf 360x200x100x50x15
     - Erlaubt komplexere Taktiken und gibt die Möglichkeit, alle 360 Abstände einzeln zu verarbeiten
 - Nutzen des RMSProp Optimierungsalgorithmus
-    - Dieser Algorithmus ist etwas besser für derartige Probleme geeignet und wurde in ähnlichen Problemstellungen schon erfolgreich verwendet
+    - _(Siehe Optimierungsalgorithmen)_
 - Erhöhung der Geschwindigkeit beim Lenken nach Links und Rechts
-    - Erlaubt schnelleres Lenken, daher müssen Entscheidungen zum Ausweichen weniger vorraussehend getroffen werden
+    - Erlaubt schnelleres Lenken, daher müssen Entscheidungen zum Ausweichen weniger vorausschauend getroffen werden
 - Kollisionen werden mit -100 Punkten bewertet
     - Bewirkt aktive Vermeidung von Hindernissen, statt einfach nur die Zeit des Fahrens zu maximieren
 - Einführung einer Belohnungsabnahme von 0.999
@@ -91,14 +91,14 @@ Durch diese Verbesserungen ist Robug deutlich schlauer geworden! Eine auf Dauer 
 noch nicht entwickelt, aber er schafft es so schon, am Ende des mittleren Pfades links abzudrehen und eine halbe Runde
 zu fahren. Selten kriegt er es sogar hin, eine ganze Runde zu drehen!
 
-Er ist sich aber auch deutlich unsicherer bei seiner Taktik, was man an der Verlustfunktion erkennt:
-
-![Loss during run 10](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/run_10_total_loss.png)
-
-Man sieht auch an den normalisierten Belohnungen, dass er mit der Zeit immer besser darin wird, hohe Belohnungen
+Man sieht an den normalisierten Belohnungen, dass er mit der Zeit immer besser darin wird, hohe Belohnungen
 zu erhalten:
 
 ![Normalized rewards during run 10](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/run_10_normalized_returns.png)
+
+Er ist sich aber auch deutlich unsicherer bei seiner Taktik, was man am Verlauf der Verluste erkennt:
+
+![Loss during run 10](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/run_10_total_loss.png)
 
 Was natürlich noch eine wichtige Frage ist: Was genau hat Robug denn in diesem Versuch gelernt? Das Ziel ist natürlich,
 dass er sich nur anhand seiner aktuellen Umgebung orientiert und Hindernissen ausweicht. Aber gerade bei großen

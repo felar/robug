@@ -14,7 +14,7 @@ _Hinweis: Alle hier genannten Quellen sind ausschließlich auf Englisch._
 - [TF Agents Tutorials](https://github.com/tensorflow/agents/tree/master/tf_agents/colabs)
 
 ## ROS
-- [Overview if ROS 2 concepts](https://index.ros.org/doc/ros2/Concepts/Overview-of-ROS-2-concepts/)
+- [Overview of ROS 2 concepts](https://index.ros.org/doc/ros2/Concepts/Overview-of-ROS-2-concepts/)
 - [ROS tutorial #2: Publishers and subscribers](https://www.youtube.com/watch?v=bJB9tv4ThV4)
 - [rclpy API Reference](http://docs.ros2.org/crystal/api/rclpy/index.html)
 - [ROS 2 examples (in Python)](https://github.com/ros2/examples/tree/master/rclpy)

@@ -5,7 +5,7 @@ ROS2 ist eine Middleware, das heißt eine Software für die Kommunikation zwisch
 Es besteht zum Großteil aus dem ROS Graphen, einem Netzwerk aus Nodes und Verbindungen zwischen diesen.
 
 ## Nodes
-Nodes sind Entitäten, die miteinander kommunizieren können, indem sie zu Topics subcriben und Messages publishen.
+Nodes sind Entitäten, die miteinander kommunizieren können, indem sie zu Topics subscriben und Messages publishen.
 Sie können außerdem Parameterwerte und Funktionen enthalten oder Funktionen anderer Nodes benutzen.
 
 ## Messages

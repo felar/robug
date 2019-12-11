@@ -15,14 +15,14 @@ Aktivierungsfunktion, um eindeutigere Ergebnisse als Wahrscheinlichkeiten zu erh
 nur eine Konvention, und nicht immer sinnvoll (wenn die Ausgabe nicht als Wahrscheinlichkeit 
 interpretiert wird).
 
-Diese Art von Lernen ist am ehesten Vergleichbar mit dem Lernen in der Schule, 
+Diese Art von Lernen ist am ehesten vergleichbar mit dem Lernen in der Schule, 
 wo vom Lehrer die korrekten Antworten vorgegeben werden. Es kann entsprechend nur für Probleme eingesetzt 
 werden, in denen es klare Daten gibt, die ein richtiges Ergebnis vorgeben. Die häufigste Anwendung von 
-dieser Architektur ist bei Klassifikationsproblemen, etwa beim erkennen von Handschrift oder Auswertung 
+dieser Architektur ist bei Klassifizierungsproblemen, etwa beim Erkennen von Handschrift oder Auswertung 
 von Sensoren.
 
 Der Begriff "Überwachtes Lernen" ist allerdings nicht exklusiv zu diesem Bereich, sondern wird auch als 
-Kategorie für jede Architektur verwendet, bei dem es zu jeder Beobachtung klare Daten gibt, was die richtige
+Kategorie für jede Architektur verwendet, bei der es zu jeder Beobachtung klare Daten gibt, was die richtige
 Antwort in diesem Fall ist.
 
 ## Unüberwachtes Lernen
@@ -62,7 +62,8 @@ resultiert. So erhalten wir letztendlich auch bei den Neuronen eine drei- (oder 
 
 Diese Art von Schichten ist deutlich effektiver zur Bilderkennung, wird aber immer noch mehr erweitert und verfeinert.
 So gibt es inzwischen beispielsweise die "Inception" Architektur, die viele "gefaltete" Schichten hintereinander kombiniert,
-aber sich auch Verzweigungen und Zusammenführungen der Schichten zu Nutze macht. 
+aber sich auch Verzweigungen und Zusammenführungen der Schichten zu Nutze macht. Das Netzwerk entscheidet dann im
+laufenden Betrieb, welche Verzweigung für das aktuelle Bild am sinnvollsten ist.
 
 ## Rekurrente neuronale Netze
 Rekurrente neuronale Netze (auch **RNN**s) ist eine Architektur von neuronalen Netzen, die sich speziell auf Probleme spezialisiert, die
@@ -75,25 +76,6 @@ Deutung (also ein vermutetes Thema) generiert. Für das zweite Wort wird dann an
 als auch der Zustand der versteckten Schichten vom ersten Wort übergeben - die Werte aus den versteckten Schichten
 werden einfach an den Vektor des Wortes angehängt. So geht die Prozedur dann weiter, bis das Netzwerk am Ende des Satzes
 eine Entscheidung getroffen hat, welches Thema der Satz behandelt.
-
-Für die Architektur der versteckten Schichten gibt es bei RNNs verschiedene Ansätze, die
-über die Jahre entwickelt wurden, da das Netzwerk bei einer simplen Architektur (wie hier beschrieben) Schwierigkeiten
-hat, verlässlich auf einen optimalen Punkt zuzulaufen (und dort schließlich stehen zu bleiben). Die wichtigste
-Eigenschaft dieser Architekturen sind die sogenannten "Forget Gates", die die Lang- und Kurzzeiterinnerung des Netzwerks
-regulieren. Beispiele für diese Architekturen (auch "Zellen" genannt) sind GRU Zellen (Generalized Recurrent Unit) oder
-LSTM zellen (Long Short Term Memory).
-
-Worauf man bei diesem Beispiel achten muss, ist dass ein RNN allein hier nicht ausreicht: Wörter
-müssen natürlich überhaupt einmal als Vektoren repräsentiert werden. Das passiert in der Regel über vorher (ebenfalls
-über neuronale Netzwerke trainierte) Matrizen, die jedem Wort einer Sprache einen Wert zuordnen. Da diese Matrizen mit
-großen Mengen an Text trainiert werden und eine "Landschaft" aus Wörtern ergeben, hat das Resultat nützliche Eigenschaften
-wie dass (themen-)verwandte Wörter Werte zugewiesen werden, die nahe beieinander liegen. So lassen sich solche Listen
-häufig bei anderen Anwendungen wiederverwendet werden, oder können als Basis genutzt werden, die nurnoch kleine
-Modifikationen benötigt, um auf das neue Problem angewendet werden zu können.
-Weitere Methoden die verwendet werden, um Sprache besser interpretieren zu können sind beispielsweise ein zusätzliches
-Netzwerk, dass jedem Wort in einem Satz Gewichtungen zuweist, so dass Dinge wie Artikel nicht so schwer ins Gewicht
-fallen. Außerdem werden rekurrente Netzwerke ein Satz einmal vorwärts und einmal rückwärts gegeben, damit auch Interpretationen
-möglich sind, bei denen Wörter am Anfang des Satzes mehr Bedeutung bekommen durch ein Wort gegen Ende.
 
 ```mermaid
 graph TD
@@ -116,13 +98,32 @@ E -->|Zustand wird angehängt| H
 H --> I
 ```
 
+Für die Architektur der versteckten Schichten gibt es bei RNNs verschiedene Ansätze, die
+über die Jahre entwickelt wurden, da das Netzwerk bei einer simplen Architektur (wie hier beschrieben) Schwierigkeiten
+hat, verlässlich auf einen optimalen Punkt zuzulaufen (und dort schließlich stehen zu bleiben). Die wichtigste
+Eigenschaft dieser Architekturen sind die sogenannten "Forget Gates", die die Lang- und Kurzzeiterinnerung des Netzwerks
+regulieren. Beispiele für diese Architekturen (auch "Zellen" genannt) sind GRU Zellen (Generalized Recurrent Unit) oder
+LSTM Zellen (Long Short Term Memory).
+
+Worauf man bei diesem Beispiel achten muss, ist dass ein RNN allein hier nicht ausreicht: Wörter
+müssen natürlich überhaupt einmal als Vektoren repräsentiert werden. Das passiert in der Regel über vorher (ebenfalls
+über neuronale Netzwerke trainierte) Matrizen, die jedem Wort einer Sprache einen Wert zuordnen. Da diese Matrizen mit
+großen Mengen an Text trainiert werden und eine "Landschaft" aus Wörtern ergeben, hat das Resultat nützliche Eigenschaften
+wie dass (themen-)verwandte Wörter Werte zugewiesen werden, die nahe beieinander liegen. So lassen sich solche Listen
+häufig bei anderen Anwendungen wiederverwenden, oder können als Basis genutzt werden, die nurnoch kleine
+Modifikationen benötigt, um auf das neue Problem angewendet werden zu können.
+Weitere Methoden die verwendet werden, um Sprache besser interpretieren zu können sind beispielsweise ein zusätzliches
+Netzwerk, dass jedem Wort in einem Satz Gewichtungen zuweist, so dass Dinge wie Artikel nicht so schwer ins Gewicht
+fallen. Außerdem werden rekurrenten Netzwerken ein Satz einmal vorwärts und einmal rückwärts gegeben, damit auch Interpretationen
+möglich sind, bei denen Wörter am Anfang des Satzes mehr Bedeutung bekommen durch ein Wort gegen Ende.
+
 ## Generative Adversarial Networks
 Generative Adversarial Networks, kurz **GAN**s, sind keine Architektur, so wie die vorigen Varianten waren, sondern
 eine Kombination aus neuronalen Netzwerken, die sich besonders gut für eine Sorte Probleme eignet: Das Generieren von
 Daten (häufig sind das Bilder, das muss aber nicht sein). Bei GANs handelt es sich um eine Form des Unüberwachten Lernens.
 
 Die Vorgehensweise von GANs ist im Grunde nicht kompliziert: Man lässt zwei separate neuronale Netzwerke gegeneinander
-antreten. Das eine Netzwerk hat die Aufgabe, möglichst echt aussehende Daten zu generieren - die Eingabe ist hier nicht
+antreten. Das eine Netzwerk hat die Aufgabe, möglichst echt aussehende Daten zu generieren. Die Eingabe ist hier nicht
 so wichtig wie bei anderen Netzwerken - sie kann zufällig sein, manchmal auch so etwas wie eine von Hand gemachte Skizze.
 Dieses Netzwerk nennt man allgemein den Generator.
 

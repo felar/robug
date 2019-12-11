@@ -1,18 +1,18 @@
 # Optimierungsalgorithmen
 Optimierungsalgorithmen versuchen die Verlustfunktion möglichst klein zu bekommen. Das tun sie, indem sie 
-die Gewichte verändern, sodass die Vorhersagen des Netzwerkes möglichst richtig werden.
+die Gewichte und Schwellenwerte verändern, sodass die Vorhersagen des Netzwerkes möglichst richtig werden.
 
 Ein gutes Beispiel dafür ist ein Wanderer, der, ohne etwas zu sehen, einen Berg hinunter kommen möchte.
 Es ist unmöglich für ihn zu wissen in welche Richtung er gehen sollte, aber er spürt, ob er bergab (Verbesserung) 
 oder bergauf (Verschlechterung) geht. Wenn er immer weiter bergab geht, kommt er irgendwann im Tal an.
 
 ## Gradient Descent, das Gradientenverfahren
-Dieses Verfahren ist der populärste Algorithmus für Maschine Learning. 
+Dieses Verfahren ist der populärste Algorithmus für maschinelles Lernen. 
 Bei diesem Verfahren geht man, von einem Startpunkt anfangend, in Richtung des negativen Gradienten
 bis man an einem Punkt angekommen ist, an dem es nicht mehr tiefer geht.
 Die Gradienten repräsentieren dabei, wie sich die Verlustfunktion verändert, wenn die Gewichte minimal verändert
 würden.
-Es werden kleine Schritte in die Richtung des Minimums gemacht, die bei uns als Lernrate beizeichnet wird. 
+Es werden kleine Schritte in die Richtung des Minimums gemacht, die bei uns als Lernrate beizeichnet werden. 
 Diese Lernrate darf nicht zu groß gewählt werden, damit man an dem tiefsten Punkt überhaupt ankommen kann.
 
 Bei einer zu großen Lernrate kann man sich das so vorstellen wie bei dem Wanderer und dem Tal. 
@@ -30,7 +30,7 @@ Deshalb wurden zunächst einige kleine Abänderungen des Verfahrens genutzt und 
 ## Stochastisches Gradientenverfahren (SGD)
 Das Standart Gradientenverfahren braucht sehr viele Berechnungen bevor etwas passiert. Das stochastische Gradientenverfahren
 kürzt diesen Prozess drastisch. "Stochastisch" steht in diesem Fall einfach für "zufällig". 
-Das Verfahren wählt zufällig genau einen Wert des Outputs pro Durchgang und berechnet nur für diesen den Gradienten, anstatt
+Das Verfahren wählt zufällig genau einen Wert der Ausgabe pro Durchgang und berechnet nur für diese den Gradienten, anstatt
 für jeden Wert.
 
 ## Gradientenverfahren mit Momentum
@@ -44,10 +44,10 @@ letzter Zeit populärer wird. In dieser Version wird der Gradient von dem Punkt 
 ![comparison_momentum_NAG](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/nag_comp.png)
 
 ## Adagrad
-Adagrad ist auch ein auf Gradienten basierter Optimierungsalgorithmus. Er passt, im Gegensatz zu den zuvor gennannten Algorithmen, 
+Adagrad ist auch ein auf Gradienten basierter Optimierungsalgorithmus. Er passt, im Gegensatz zu den zuvor genannten Algorithmen, 
 seine Lernrate aufgrund der vorherigen Beobachtungen an. Adagrad vergrößert die Lernrate bei kleinen und verkleinert 
 sie bei großen Zahlen.
-Dazu summiert es dei Quadrate der vorher bestimmten Gradienten und teilt sie durch ihre Anzahl.
+Dazu summiert es die Quadrate der vorher bestimmten Gradienten und teilt sie durch ihre Anzahl.
 Dadurch löst Adagrad zunächst das Problem des manuellen Wählens der Lernrate
 und die Berechnung der Gradienten ist schneller und zuverlässiger.
 
@@ -60,7 +60,7 @@ Gradienteninformationen.
 Der RMSprop Algorithmus ist der Algorithmus, den wir in unserem Projekt benutzen. 
 
 RMS steht für **R**oot **M**ean **S**quare, 
-also in Deutsch das Quadratische Mittel. Es ist also die Quadratwurzel aus der Summe der quadrierten Zahlen geteilt durch 
+also auf Deutsch das Quadratische Mittel. Es ist also die Quadratwurzel aus der Summe der quadrierten Zahlen geteilt durch 
 die Anzahl der Zahlen, von denen dieses Mittel berechnet werden soll.
 Bei den Zahlen 1 und 2 wird es also wie folgt berechnet:
 

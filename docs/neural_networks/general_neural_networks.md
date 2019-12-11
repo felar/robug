@@ -5,14 +5,14 @@ Neuronale Netzwerke sind im Groben Einheiten zur Informationsverarbeitung. Sie r
 Situtation gleich, sondern ziehen Informationen aus vielen, nicht unbedingt eindeutigen Faktoren und 
 verbessern sich selbst indem sie aus Fehlern lernen.
 Das Funktionsprinzip von neuronalen Netzwerken wurde von der Natur abgeleitet. Es wurde sich an neuronalen Zellen
-orientiert, die, zum Beispiel im Gehirn, angekommene Signale verarbeitet.
+orientiert, die, zum Beispiel im Gehirn, angekommene Signale verarbeiten.
 
 ## Wie sind künstliche neuronale Netzwerke aufgebaut?
 Der Grundbestandteil neuronaler Netzwerke sind die Neuronen. Sie sind in Schichten strukturiert.
 Die erste Schicht enthält den Input und die letzte Schicht zeigt die vorhergesagte richtige Antwort des Systems und die 
-Wahrscheinlichkeit, dass dies tatächlich der richtigen Antwort entspricht.
-Zwischen dieser Input- und der Outputschicht gibt es sogenannte "Hidden Layers" also verborgene Schichten. Die Anzahl
-dieser Schichten und auch die Anzahl der Neuronen pro Schicht sind beliebig, das bestimmen dieser Anzahlen nennt man Architektur.
+Wahrscheinlichkeit, dass dies tatsächlich der richtigen Antwort entspricht.
+Zwischen dieser Eingabe- und der Ausgabeschicht gibt es sogenannte "Hidden Layers" also verborgene Schichten. Die Anzahl
+dieser Schichten und auch die Anzahl der Neuronen pro Schicht sind beliebig, das Bestimmen dieser Anzahlen nennt man Architektur.
 
 ### Wie funktionieren Neuronen? 
 Jedes Neuron funktioniert durch diese eine mathematische Funktion:
@@ -21,19 +21,19 @@ Jedes Neuron funktioniert durch diese eine mathematische Funktion:
 Y=A(X.W+b)
 ```
 
-#### Der Input (X)
-Der Input wird als Vektor in die Funktion gegeben, auch Bilder werden "flach" in einen Vektor gepackt.
-Wenn das neuronale Netzwerk mehrere verborgene Schichten hat, wir der Output der vorherigen Schicht als Input genutzt.
+#### Die Eingabe (X)
+Die Eingabe wird als Vektor in die Funktion gegeben, auch Bilder werden "flach" in einen Vektor gepackt.
+Wenn das neuronale Netzwerk mehrere verborgene Schichten hat, wir die Ausgabe der vorherigen Schicht als Eingabe genutzt.
 
-#### Weights (W) und Biases (b)
-Weights, also Gewichte und Biases sind die zwei Instanzen, die durch das Lernen des Netzwerkes verändert werden können.
-Es gibt so viele Weights wie Input pro Neuron, sodass die Multiplikation durchgeführt werden kann. 
-Es gibt jedoch meist weniger Biases, weshalb das + in der Formel zu einem "Broadcast-Plus" wird. 
-Es werden also die selben Biases mehrfach verwendet.
+#### Gewichtungen (W) und Schwellenwerte (b)
+Gewichtungen und Schwellenwerte sind die zwei Instanzen, die durch das Lernen des Netzwerkes verändert werden können.
+Es gibt so viele Gewichtungen wie Eingaben pro Neuron, sodass die Multiplikation durchgeführt werden kann. 
+Es gibt jedoch meist weniger Schwellenwerte, weshalb das + in der Formel zu einem "Broadcast-Plus" wird. 
+Es werden also die selben Schwellenwerte mehrfach verwendet.
 
 #### Die Aktivierungsfunktion (A)
 Aktivierungsfunktionen sind stark von Neurowissenschaftlern beeinflusst worden. Sie bestimmt das Muster in dem die 
-Neuronen aktiviert werden. Diese Funktionen sind immer nonlinear, da ihr Haptziel ist, die Liniarität des Netzwerkes zu unterbrechen.
+Neuronen aktiviert werden. Diese Funktionen sind immer nonlinear, da ihr Hauptziel ist, die Liniarität des Netzwerkes zu unterbrechen.
 Die meistbenutzten Aktivierungsfunktionen sind Sigmoid, relu und softmax.
 
 ##### Sigmoid
@@ -63,8 +63,8 @@ softmax(L_{ n }) = \frac{ e^{ L_{ n } } }{ \left\lvert \left\lvert e^{ L } \righ
 ```
 ![softmax](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/softmax.png)
 
-### Was genau sagt mir der Output (Y)?
-Der Output, der die letzte Schicht des Netzwerkes bildet, gibt die Ergebnisse des Netzwerkes aus, also das, was das Netzwerk 
+### Was genau sagt mir die Ausgabe (Y)?
+Die Ausgabe, die die letzte Schicht des Netzwerkes bildet, gibt die Ergebnisse des Netzwerkes aus, also das, was das Netzwerk 
 für die richtige Lösung hält.
 
 ### Was ist eine Verlustfunktion?
@@ -75,26 +75,26 @@ Die richtige Verlustfunktion zu wählen ist sehr schwierig, da sie zu den Anford
 Bei falscher Wahl kann der Prozess des Trainierens länger dauern oder gar nicht erst richtig funktionieren.
  
 #### Kreuzentropie
-Die Verlustfunktion Kreuzentropie berechnet eine Art Diffenrenz zwischen dem Ergebnis des Netzwerkes und der tatsächlich richtigen Lösung
+Die Verlustfunktion Kreuzentropie berechnet eine Art Differenz zwischen dem Ergebnis des Netzwerkes und der tatsächlich richtigen Lösung
 mit dieser Formel:
  ```latex
 -\sum{Y'*log(Y)}
 ```
-Die richtige Lösung ist einem Vektor angegeben, bei dem das richtige Ergebnis mit einer 1 und alle falschen Werte mit 
+Die richtige Lösung ist einem Vektor `Y'` angegeben, bei dem das richtige Ergebnis mit einer 1 und alle falschen Werte mit 
 einer 0 markiert sind. Dies nennt man auch One-Hot-Kodierung.
 
-Die Kreuzentropie basiert auch der Idee der Entropie der Informationstheorie, berechnet also die Anzahl der Bits die notwendig sind,
+Die Kreuzentropie basiert auf der Idee der Entropie der Informationstheorie, berechnet also die Anzahl der Bits die notwendig sind,
 um die Differenz zu übermitteln. Die Funktion gibt eine positive Bitzahl aus.
 
 ___
 
-Das Ziel des neuronalen Netzwerkes ist dann das Ergebnis der Verlustfunktion zu minimieren um einen möglichst 
-korrekten Output auszugeben.
+Das Ziel des neuronalen Netzwerkes ist dann, das Ergebnis der Verlustfunktion zu minimieren um eine möglichst 
+korrekte Ausgabe auszugeben.
 
-Um diesen richtigen Output erreichen zu können gibt es sogenannte Optimierungsalgorithmen, dessen Ziel es ist,
-den kleinsten Abstand von richiger Lösung zu dem Output des Netzwerkes zu finden.
+Um diese richtige Ausgabe erreichen zu können gibt es sogenannte Optimierungsalgorithmen, deren Ziel es ist,
+den kleinsten Abstand von richtiger Lösung zu der Ausgabe des Netzwerkes zu finden.
 
-Durch das Trainieren des neuralen Netzwerkes mit Optimierungsalgorithmus wird langsam der gewünschte Tiefpunkt erreicht.
+Durch das Trainieren des neuronalen Netzwerkes mit Optimierungsalgorithmus wird langsam der gewünschte Tiefpunkt erreicht.
 
 ### Wie funktioniert das Training?
 Wenn man mit dem neuronalen Netzwerk anfängt setzt man die Gewichte zufällig. Dies führt natürlich am Anfang zu
