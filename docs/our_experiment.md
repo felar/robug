@@ -15,6 +15,26 @@ von der Firma ROBOTIS. Dieser ist nämlich speziell für Lernzwecke gedacht, ber
 ausgestattet und kann dank Unterstützung für ROS sowohl real als auch in einer Simulation betrieben werden. Zudem
 ist für dieses Modell eine recht umfassende Dokumentation online einsehbar.
 
+Für die Kommunikation zwischen unserem Python-Programm und dem Turtlebot nutzen wir natürlich ROS 2 und seine
+Python-Bibliothek `rclpy`. Die Bewegung und die Messungen des Laser-Sensors werden dabei ganz einfach über zwei
+Topics kommuniziert:
+```mermaid
+graph LR
+A[Turtlebot 3]
+
+subgraph ROS 2
+B[Topic<br/>'scan']
+C[Topic<br/>'cmd_vel']
+end
+
+D[Unser Programm]
+
+A -->|publish Sensor-Input| B
+A -->|subscribe|C
+D -->|subscribe|B
+D -->|publish Richtungs-Befehle|C
+```
+
 Beim neuronalen Netzwerk nutzen wir die "klassische" Form des bestärkenden Lernens, da diese vergleichsweise noch
 nicht so anspruchsvoll ist wie beispielsweise das Deep Q Learning, aber trotzdem deutlich besser für das Problem
 geeignet ist als ein neuronales Netzwerk zur Klassifizierung wäre. Für die Umsetzung nutzen wir dabei [Tensorflow](https://www.tensorflow.org/)

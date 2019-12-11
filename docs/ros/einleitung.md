@@ -9,21 +9,3 @@ Der Turtlebot ist bereits darauf ausgerichtet, mit ROS betrieben zu werden. Dadu
 
 ## Wie?
 Darum, wie ROS grundsätzlich funktioniert (und später auch, wie genau wir es benutzen), wird es sich in diesem Abschnitt drehen.
-
-
-```mermaid
-graph LR
-A[Turtlebot 3]
-
-subgraph ROS 2
-B[Topic<br/>'scan']
-C[Topic<br/>'cmd_vel']
-end
-
-D[Unser Programm]
-
-A -->|publish Sensor-Input| B
-A -->|subscribe|C
-D -->|subscribe|B
-D -->|publish Richtungs-Befehle|C
-```
