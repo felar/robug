@@ -45,7 +45,10 @@ letzter Zeit populärer wird. In dieser Version wird der Gradient von dem Punkt 
 
 ## Adagrad
 Adagrad ist auch ein auf Gradienten basierter Optimierungsalgorithmus. Er passt, im Gegensatz zu den zuvor gennannten Algorithmen, 
-seine Lernrate aufgrund der vorherigen Beobachtungen an. Dadurch löst Adagrad zunächst das Problem des manuellen Wählens der Lernrate
+seine Lernrate aufgrund der vorherigen Beobachtungen an. Adagrad vergrößert die Lernrate bei kleinen und verkleinert 
+sie bei großen Zahlen.
+Dazu summiert es dei Quadrate der vorher bestimmten Gradienten und teilt sie durch ihre Anzahl.
+Dadurch löst Adagrad zunächst das Problem des manuellen Wählens der Lernrate
 und die Berechnung der Gradienten ist schneller und zuverlässiger.
 
 ## Adadelta
@@ -65,4 +68,5 @@ Bei den Zahlen 1 und 2 wird es also wie folgt berechnet:
  \sqrt{ \frac{ 1^{ 2 }+2^{ 2 } }{ 2 }}\approx1,58
 ```
 
+RMSprop funktioniert wie Adagrad, es benutzt nur statt der oben genannten Funktion das Quadratische Mittel.
 
