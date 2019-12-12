@@ -42,8 +42,6 @@ Außerdem wären, oder sind sie teilweise auch schon, eine gute Alternative zum 
 ## Gefahren von Künstlicher Intelligenz
 Es gibt jedoch auch einige Nachteile oder moralisch fragwürdige Anwendungsbereiche von KIs.
 
-![](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/ai_risks.jpg)
-
 ### Was passiert, wenn Künstlich Intelligente Roboter schlauer als vorher gedacht werden? 
 Wenn die Ziele der KI nicht komplett mit den geplanten Zielen übereinstimmen, kann die KI auch destruktive 
 Methoden wählen um sein Ziel zu erreichen, sodass die KI unkontrollierbar wird.
