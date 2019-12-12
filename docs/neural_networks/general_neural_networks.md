@@ -47,7 +47,9 @@ S(x) = \frac{ 1 }{ 1 + e^{ -x } } = \frac{ e^{ x } }{ e^{ x } + 1}
 ![sigmoid](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/sigmoid.png)
 
 ##### relu
-Stark biologisch beeinflusst wurde diese Funktion zum Ablöser der Sigmoid-Funktion.
+Relu gibt eine 0 aus, wenn der eingegebene Wert kleiner oder gleich 0 ist, gibt aber den exakten eingegeben Wert zurück, wenn das
+nicht der Fall ist.
+Stark biologisch beeinflusst wurde diese Funktion zum Ablöser der Sigmoid-Funktion, da sie schneller und effizienter funktioniert.
 
 ```latex
 f(x) = max(0, x)
@@ -86,17 +88,20 @@ einer 0 markiert sind. Dies nennt man auch One-Hot-Kodierung.
 Die Kreuzentropie basiert auf der Idee der Entropie der Informationstheorie, berechnet also die Anzahl der Bits die notwendig sind,
 um die Differenz zu übermitteln. Die Funktion gibt eine positive Bitzahl aus.
 
-___
+### Wie funktioniert das Training?
+Wenn man mit dem neuronalen Netzwerk anfängt setzt man die Gewichte zufällig. 
+Dies führt natürlich am Anfang zu schlechten Ergebnissen. 
 
-Das Ziel des neuronalen Netzwerkes ist dann, das Ergebnis der Verlustfunktion zu minimieren um eine möglichst 
+Das neuronale Netzwerk minimiert das Ergebnis der Verlustfunktion um eine möglichst 
 korrekte Ausgabe auszugeben.
-
 Um diese richtige Ausgabe erreichen zu können gibt es sogenannte Optimierungsalgorithmen, deren Ziel es ist,
 den kleinsten Abstand von richtiger Lösung zu der Ausgabe des Netzwerkes zu finden.
 
 Durch das Trainieren des neuronalen Netzwerkes mit Optimierungsalgorithmus wird langsam der gewünschte Tiefpunkt erreicht.
 
-### Wie funktioniert das Training?
-Wenn man mit dem neuronalen Netzwerk anfängt setzt man die Gewichte zufällig. Dies führt natürlich am Anfang zu
-schlechten Ergebnissen. Durch die Verlustfunktion und die Optimierungsalgorithmen werden die Gewichte nach 
-und nach angepasst.
+Es werden Werte in das Netzwerk gegeben und das Netzwerk berechnet seine Antwort mit Hilfe der Gewichte und Schwellenwerte 
+und der Aktivierungsfunktion.
+Diese Antworten werden dann von der Verlustfunktion bewertet und durch das minimieren der Verlustfunktion durch den
+Optimierungsalgorithmus, der die Gewichte korrigiert, verbessert.
+Das Netzwerk hat dann im nächsten Durchlauf neue Antworten mit den veränderten Gewichten und diese werden dann wiederum von
+der Verlustfunktion bewertet, sodass wieder neue Gewichtungen durch die Optimierungsfunktion entstehen.
