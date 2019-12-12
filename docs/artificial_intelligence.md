@@ -15,6 +15,7 @@ Es wird zusammengesetzt aus
   * Beobachtung
 
 ## Anwendung von Künstlicher Intelligenz
+
 Ein großer Vorteil an KIs wäre, dass kein Mensch mehr arbeiten müsste, da die KIs deutlich schneller und 
 günstiger jede Art von Arbeit verrichten könnten.
 
@@ -24,6 +25,8 @@ Gesichtserkennung, die es mittlerweile beireits in den meisten Smartphones gibt,
 Existenz von künstlicher Intelligenz.
 
 Auch autonomes Fahren könnte den Alltag für einige deutlich erleichtern.
+
+![autonomes_Fahren](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/autonomes_fahren.jpg)
 
 Wettervorhersagen könnten deutlich zuverlässiger werden, sodass bei Tsunamis oder ähnlichen Umweltkatastrophen
 eher evakuiert und mehr Menschen gerettet werden könnten.
@@ -38,6 +41,8 @@ Außerdem wären, oder sind sie teilweise auch schon, eine gute Alternative zum 
 
 ## Gefahren von Künstlicher Intelligenz
 Es gibt jedoch auch einige Nachteile oder moralisch fragwürdige Anwendungsbereiche von KIs.
+
+![](https://raw.githubusercontent.com/felar/robug/master/pictures_gifs/ai_risks.jpg)
 
 ### Was passiert, wenn Künstlich Intelligente Roboter schlauer als vorher gedacht werden? 
 Wenn die Ziele der KI nicht komplett mit den geplanten Zielen übereinstimmen, kann die KI auch destruktive 
