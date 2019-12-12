@@ -4,6 +4,9 @@ _Hinweis: Alle hier genannten Quellen sind ausschließlich auf Englisch._
 ## Neuronale Netzwerke
 - [But what is a Neural Network? | Deep learning, chapter 1](https://www.youtube.com/watch?v=aircAruvnKk)
 - [Gradient descent, how neural networks learn | Deep learning, chapter 2](https://www.youtube.com/watch?v=IHZwWFHWa-w)
+- [Overview of activation functions](https://adl1995.github.io/an-overview-of-activation-functions-used-in-neural-networks.html)
+- [How do we train neural networks?](https://towardsdatascience.com/how-do-we-train-neural-networks-edd985562b73)
+- [Introduction to optimizers](https://algorithmia.com/blog/introduction-to-optimizers)
 - [Tensorflow and deep learning - without a PhD by Martin Görner](https://www.youtube.com/watch?v=vq2nnJ4g6N0)
 - [Tensorflow, deep learning and modern RNN architectures, without a PhD by Martin Gorner](https://www.youtube.com/watch?v=pzOzmxCR37I)
 - [TensorFlow, Deep Learning, and Modern Convolutional Neural Nets, Without a PhD (Cloud Next '18)](https://www.youtube.com/watch?v=KC4201o83W0)
